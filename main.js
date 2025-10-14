@@ -26,9 +26,9 @@
         'lifedrawing': 'sticky'
     };
 
-    var bigBgPaper = "images/assets/bigbgpaper.webp";
-    var lilBgPaper = "images/assets/lilbgpaper.webp";
-    var tallBgPaper = "images/assets/tallbgpaper.webp";
+    var bigBgPaper = "images/bigbgpaper.png";
+    var lilBgPaper = "images/lilbgpaper.png";
+    var tallBgPaper = "images/tallbgpaper.png";
 
     var windowWidth = window.matchMedia("(max-width: 550px)");
 
@@ -258,6 +258,13 @@
                             optionalnakd = section.substring(11);
                             console.log(optionalnakd);
                             section = "lifedrawing";
+                        }
+                        let sectNames = Object.getOwnPropertyNames(additionalSectionNames); //bgpaper
+                        for (let i=0; i<sectNames.length; i++) {
+                            let additionalEl = document.getElementById(sectNames[i]);
+                            try {
+                                additionalEl.classList.add("invisible");
+                            }catch{}
                         }
                         try {
                             var sectionEl = document.getElementById(section);
