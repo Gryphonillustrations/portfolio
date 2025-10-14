@@ -12,9 +12,8 @@
 
     // page features setup
     //setupTheme(globalTagTheme);
-    var hasSave = loadSavePoint();
+    //var hasSave = loadSavePoint();
     //setupButtons(hasSave);
-
 
     // Set initial save point
     savePoint = story.state.toJson();
@@ -38,6 +37,14 @@
         setMobilePaper(windowWidth);
     })
 
+
+
+    try {
+        let savedState = window.localStorage.getItem('save-state');
+        if (savedState) story.state.LoadJson(savedState);
+    } catch (e) {
+        console.debug("Couldn't load save state");
+    }
 
 
      // Kick off the start of the story!
@@ -193,7 +200,7 @@
                     showAfter(delay, backEl);
                     delay += 200.0;
                 }
-                backEl.innerHTML = `<a href='#'>${choice.text}</a>`;
+                backEl.innerHTML = `<a href='#anchor-home'>${choice.text}</a>`;
                 choiceEl = backEl;
             } else {
                 var choiceParagraphElement = document.createElement('p');
@@ -202,9 +209,9 @@
 
                 for(var i=0; i<customClasses.length; i++)
                     choiceParagraphElement.classList.add(customClasses[i]);
-
+                    
                 if(isClickable){
-                    choiceParagraphElement.innerHTML = `<a href='#'>▷ ${choice.text}</a>`;
+                    choiceParagraphElement.innerHTML = `<a href='#anchor-${section}'>▷ ${choice.text}</a>`;
                 }else{
                     choiceParagraphElement.innerHTML = `<span class='unclickable'>▷ ${choice.text}</span>`;
                 }
@@ -226,7 +233,7 @@
                 choiceAnchorEl.addEventListener("click", function(event) {
 
                     // Don't follow <a> link
-                    event.preventDefault();
+                    //event.preventDefault();
                     let bgPaperEl = document.getElementById('bgpaper');
 
                     // Extend height to fit
@@ -259,6 +266,13 @@
                             console.log(optionalnakd);
                             section = "lifedrawing";
                         }
+                        let sectNames = Object.getOwnPropertyNames(additionalSectionNames); //bgpaper
+                        for (let i=0; i<sectNames.length; i++) {
+                            let additionalEl = document.getElementById(sectNames[i]);
+                            try {
+                                additionalEl.classList.add("invisible");
+                            }catch{}
+                        }
                         try {
                             var sectionEl = document.getElementById(section);
                             setMobilePaper(windowWidth, additionalSectionNames[section])
@@ -284,9 +298,11 @@
                     story.ChooseChoiceIndex(choice.index);
                     console.log(choice.index);
 
-                    // This is where the save button will save from
+                    // Set save point
                     savePoint = story.state.toJson();
+                    //Save page
                     savePage();
+
                     // Aaand loop
                     continueStory();
                 });
