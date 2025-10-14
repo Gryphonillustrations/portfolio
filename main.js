@@ -200,7 +200,7 @@
                     showAfter(delay, backEl);
                     delay += 200.0;
                 }
-                backEl.innerHTML = `<a href='#anchor-home'>${choice.text}</a>`;
+                backEl.innerHTML = `<a href='#home'>${choice.text}</a>`;
                 choiceEl = backEl;
             } else {
                 var choiceParagraphElement = document.createElement('p');
@@ -211,7 +211,7 @@
                     choiceParagraphElement.classList.add(customClasses[i]);
                     
                 if(isClickable){
-                    choiceParagraphElement.innerHTML = `<a href='#anchor-${section}'>▷ ${choice.text}</a>`;
+                    choiceParagraphElement.innerHTML = `<a href='${section}'>▷ ${choice.text}</a>`;
                 }else{
                     choiceParagraphElement.innerHTML = `<span class='unclickable'>▷ ${choice.text}</span>`;
                 }
@@ -231,10 +231,9 @@
             if(isClickable){
                 var choiceAnchorEl = choiceEl.querySelectorAll("a")[0];
                 choiceAnchorEl.addEventListener("click", function(event) {
+                    
 
-                    // Don't follow <a> link
-                    //event.preventDefault();
-                    let bgPaperEl = document.getElementById('bgpaper');
+
 
                     // Extend height to fit
                     // We do this manually so that removing elements and creating new ones doesn't
@@ -250,11 +249,15 @@
                         let sectNames = Object.getOwnPropertyNames(additionalSectionNames); //bgpaper
                         //let additionalEls = addDivEl.children
                         for (let i=0; i<sectNames.length; i++) {
-                            let additionalEl = document.getElementById(sectNames[i]);
+                            let additionalEl = document.getElementById("div" + sectNames[i]);
                             try {
                                 additionalEl.classList.add("invisible");
                                 choiceEl.innerHTML = "<br>";
                             } catch{}
+                        }
+                        if (!isBack) {
+                            // Don't follow <a> link
+                            event.preventDefault();
                         }
                         setMobilePaper(windowWidth, "big")
                         showAfter(0.0,document.getElementById("banjo"));
@@ -268,13 +271,13 @@
                         }
                         let sectNames = Object.getOwnPropertyNames(additionalSectionNames); //bgpaper
                         for (let i=0; i<sectNames.length; i++) {
-                            let additionalEl = document.getElementById(sectNames[i]);
+                            let additionalEl = document.getElementById("div-" + sectNames[i]);
                             try {
                                 additionalEl.classList.add("invisible");
                             }catch{}
                         }
                         try {
-                            var sectionEl = document.getElementById(section);
+                            var sectionEl = document.getElementById("div-" + section);
                             setMobilePaper(windowWidth, additionalSectionNames[section])
                             showAfter(200.0, sectionEl);
                             
