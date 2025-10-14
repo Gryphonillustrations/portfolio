@@ -26,9 +26,9 @@
         'lifedrawing': 'sticky'
     };
 
-    var bigBgPaper = "images/bigbgpaper.png";
-    var lilBgPaper = "images/lilbgpaper.png";
-    var tallBgPaper = "images/tallbgpaper.png";
+    var bigBgPaper = "images/assets/bigbgpaper.webp";
+    var lilBgPaper = "images/assets/lilbgpaper.webp";
+    var tallBgPaper = "images/assets/tallbgpaper.webp";
 
     var windowWidth = window.matchMedia("(max-width: 550px)");
 
