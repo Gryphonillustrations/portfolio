@@ -234,9 +234,6 @@
             if(isClickable){
                 var choiceAnchorEl = choiceEl.querySelectorAll("a")[0];
                 choiceAnchorEl.addEventListener("click", function(event) {
-                    
-
-
 
                     // Extend height to fit
                     // We do this manually so that removing elements and creating new ones doesn't
@@ -261,6 +258,7 @@
                         if (!isBack) {
                             // Don't follow <a> link
                             event.preventDefault();
+                            document.getElementById("goback").innerHTML = "<br>";
                         }
                         setMobilePaper(windowWidth, "big")
                         showAfter(0.0,document.getElementById("banjo"));
