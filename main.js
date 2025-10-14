@@ -214,7 +214,7 @@
                     choiceParagraphElement.classList.add(customClasses[i]);
                     
                 if(isClickable){
-                    choiceParagraphElement.innerHTML = `<a href='${section}'>▷ ${choice.text}</a>`;
+                    choiceParagraphElement.innerHTML = `<a href='#${section}'>▷ ${choice.text}</a>`;
                 }else{
                     choiceParagraphElement.innerHTML = `<span class='unclickable'>▷ ${choice.text}</span>`;
                 }
