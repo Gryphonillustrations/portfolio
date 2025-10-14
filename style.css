@@ -33,6 +33,8 @@ img {
     padding-top:2.5em;
 }
 
+
+
 .goback a {
   text-align: center;
   color: white;
@@ -242,14 +244,14 @@ h3 {
     font-style: italic;
     font-size: 12pt;
 }
-
+/* 
 @media screen and (prefers-reduced-motion: no-preference) {
     .written-in-ink {
         transition: color 0.6s, background 0.6s;
     }
 }
 
-/* 
+
   Enables <iframe> support work on itch.io when using mobile iOS
 
 .outerContainer {
@@ -283,13 +285,13 @@ h3 {
     width: 82%;
     margin: 0 auto;
 }
-
+/* 
 @media screen and (prefers-reduced-motion: no-preference) {
     .switched .container {
         transition: background-color 0.6s;
     }
 }
-
+*/
 p {
     font-family: "Raleway";
     font-size: 16pt;
@@ -389,6 +391,13 @@ img {
     /*font-size: 1.8vw;*/
 }
 
+.bottomaligned {
+    position: absolute;
+    bottom: 1%;
+    right: 7%;
+    margin-left: 12%;
+    text-align: right;
+}
 
 #controls {
     display: none;
@@ -454,6 +463,9 @@ img {
   .paintings {
     top: auto;
   }
+  .papermain {
+    height: 70vw;
+  }
 }
 
 
@@ -484,5 +496,6 @@ img {
   }
   .papermain {
     margin-top: 0.5em;
+    height: auto;
   }
 }
