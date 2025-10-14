@@ -200,7 +200,7 @@
                     showAfter(delay, backEl);
                     delay += 200.0;
                 }
-                backEl.innerHTML = `<a href='#'>${choice.text}</a>`;
+                backEl.innerHTML = `<a href='#anchor-home'>${choice.text}</a>`;
                 choiceEl = backEl;
             } else {
                 var choiceParagraphElement = document.createElement('p');
@@ -209,9 +209,9 @@
 
                 for(var i=0; i<customClasses.length; i++)
                     choiceParagraphElement.classList.add(customClasses[i]);
-
+                    
                 if(isClickable){
-                    choiceParagraphElement.innerHTML = `<a href='#'>▷ ${choice.text}</a>`;
+                    choiceParagraphElement.innerHTML = `<a href='#anchor-${section}'>▷ ${choice.text}</a>`;
                 }else{
                     choiceParagraphElement.innerHTML = `<span class='unclickable'>▷ ${choice.text}</span>`;
                 }
@@ -233,7 +233,7 @@
                 choiceAnchorEl.addEventListener("click", function(event) {
 
                     // Don't follow <a> link
-                    event.preventDefault();
+                    //event.preventDefault();
                     let bgPaperEl = document.getElementById('bgpaper');
 
                     // Extend height to fit
@@ -298,9 +298,11 @@
                     story.ChooseChoiceIndex(choice.index);
                     console.log(choice.index);
 
-                    // This is where the save button will save from
+                    // Set save point
                     savePoint = story.state.toJson();
+                    //Save page
                     savePage();
+
                     // Aaand loop
                     continueStory();
                 });
