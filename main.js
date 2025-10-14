@@ -12,9 +12,8 @@
 
     // page features setup
     //setupTheme(globalTagTheme);
-    var hasSave = loadSavePoint();
+    //var hasSave = loadSavePoint();
     //setupButtons(hasSave);
-
 
     // Set initial save point
     savePoint = story.state.toJson();
@@ -38,6 +37,14 @@
         setMobilePaper(windowWidth);
     })
 
+
+
+    try {
+        let savedState = window.localStorage.getItem('save-state');
+        if (savedState) story.state.LoadJson(savedState);
+    } catch (e) {
+        console.debug("Couldn't load save state");
+    }
 
 
      // Kick off the start of the story!
