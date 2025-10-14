@@ -194,8 +194,10 @@
             if (choice.text.includes("go back")) {
                 isBack = true;
             }
-            if (section == "home") {
+            if (section == "bottomhome") {
                 isBack = true;
+                customClasses.push("bottomaligned");
+                section = "home";
             }
             if (isBack) {
                 var backEl = document.getElementById("goback");
