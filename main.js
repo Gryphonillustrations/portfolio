@@ -251,7 +251,7 @@
                         let sectNames = Object.getOwnPropertyNames(additionalSectionNames); //bgpaper
                         //let additionalEls = addDivEl.children
                         for (let i=0; i<sectNames.length; i++) {
-                            let additionalEl = document.getElementById("div" + sectNames[i]);
+                            let additionalEl = document.getElementById("div-" + sectNames[i]);
                             try {
                                 additionalEl.classList.add("invisible");
                                 choiceEl.innerHTML = "<br>";
