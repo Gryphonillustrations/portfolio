@@ -194,6 +194,9 @@
             if (choice.text.includes("go back")) {
                 isBack = true;
             }
+            if (section == "home") {
+                isBack = true;
+            }
             if (isBack) {
                 var backEl = document.getElementById("goback");
                 if (!backEl.innerText.includes("back")) {
