@@ -187,7 +187,7 @@ img {
 /*  3 slice paper:  */ 
 
 .centerpaper {
-    background-image: url("images/assets/centerpaper.png");
+    background-image: url("images/assets/3slice_center.webp");
     background-size: 100%;
     max-width: 907px;
     margin-top: 7%;
